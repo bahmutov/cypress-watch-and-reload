@@ -1,17 +1,23 @@
 {
   "name": "test-reload",
   "version": "1.0.0",
-  "description": "",
+  "description": "Reloads Cypress when a given watched file changes",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "cypress",
+    "cypress-io",
+    "plugin"
+  ],
+  "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
     "chokidar": "2.1.2",
-    "cypress": "3.1.5",
     "ws": "6.1.4"
+  },
+  "devDependencies": {
+    "cypress": "3.1.5"
   }
 }
