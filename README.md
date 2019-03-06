@@ -32,6 +32,8 @@ In your `cypress.json` set wildcard with files to watch. For example
 
 Every time you change one of the files matching the wildcard, Cypress will reload itself, rerunning the tests.
 
+This package uses [chokidar](https://github.com/paulmillr/chokidar) under the hood, see [plugins.js](plugins.js)
+
 ## Example
 
 See project [cypress-watch-and-reload-example](https://github.com/bahmutov/cypress-watch-and-reload-example)
