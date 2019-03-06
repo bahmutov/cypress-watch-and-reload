@@ -11,8 +11,11 @@
     "cypress-io",
     "plugin"
   ],
+  "files": [
+    "*.js"
+  ],
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "chokidar": "2.1.2",
     "ws": "6.1.4"
