@@ -30,6 +30,11 @@ if (options && typeof options.watch === 'string') {
         client.send(text)
       }
     })
+
+    client.on('message', function (message) {
+      console.log('message from spec')
+      console.log(message)
+    })
   })
 } else {
   console.log(

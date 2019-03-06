@@ -15,4 +15,14 @@ context('Example Cypress TodoMVC test', () => {
     cy.contains('h2', 'simple HTML page')
     cy.get('@alert').should('be.calledWithExactly', 'bar')
   })
+
+  it.only('delays visit', () => {
+    cy.wrap(42).should(value => {
+      expect(value).to.equal(42)
+      return new Cypress.Promise((resolve, reject) => {
+        Cypress.ws.send('foo')
+        resolve()
+      })
+    })
+  })
 })

@@ -1,10 +1,10 @@
 /// <reference types="Cypress" />
 
-const ws = new WebSocket('ws://localhost:8765')
+Cypress.ws = new WebSocket('ws://localhost:8765')
 
 beforeEach(() => {
-  expect(ws.readyState).to.equal(WebSocket.OPEN)
-  ws.onmessage = ev => {
+  expect(Cypress.ws.readyState).to.equal(WebSocket.OPEN)
+  Cypress.ws.onmessage = ev => {
     console.log('message from OS')
     console.log(ev)
     if (ev.type === 'message' && ev.data) {
