@@ -1,4 +1,6 @@
-# cypress-watch-and-reload
+# cypress-watch-and-reload [![CircleCI](https://circleci.com/gh/bahmutov/cypress-watch-and-reload.svg?style=svg)](https://circleci.com/gh/bahmutov/cypress-watch-and-reload)
+
+> Reloads Cypress when a given watched file changes
 
 ## Use
 

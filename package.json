@@ -1,10 +1,11 @@
 {
   "name": "test-reload",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "Reloads Cypress when a given watched file changes",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cypress run",
+    "semantic-release": "semantic-release"
   },
   "keywords": [
     "cypress",
@@ -21,6 +22,11 @@
     "ws": "6.1.4"
   },
   "devDependencies": {
-    "cypress": "3.1.5"
+    "cypress": "3.1.5",
+    "semantic-release": "^15.13.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bahmutov/cypress-watch-and-reload.git"
   }
 }
