@@ -7,16 +7,12 @@ context('Example Cypress TodoMVC test', () => {
     // usually we recommend setting baseUrl in cypress.json
     // but for simplicity of this example we just use it here
     // https://on.cypress.io/visit
-    cy.visit('index.html')
+    cy.on('window:alert', cy.stub().as('alert'))
+    cy.visit('page/index.html')
   })
 
   it('has header', function () {
     cy.contains('h2', 'simple HTML page')
+    cy.get('@alert').should('be.calledWithExactly', 'bar')
   })
-
-  // more examples
-  //
-  // https://github.com/cypress-io/cypress-example-todomvc
-  // https://github.com/cypress-io/cypress-example-kitchensink
-  // https://on.cypress.io/writing-your-first-test
 })

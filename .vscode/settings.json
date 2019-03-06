@@ -1,0 +1,16 @@
+{
+  "peacock.affectActivityBar": true,
+  "peacock.affectStatusBar": true,
+  "peacock.affectTitleBar": true,
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#ef7853",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#4c3635",
+    "titleBar.activeBackground": "#eb5424",
+    "titleBar.inactiveBackground": "#762a12",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveForeground": "#e8c2b6",
+    "statusBar.background": "#eb5424",
+    "statusBar.foreground": "#e7e7e7"
+  }
+}

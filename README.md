@@ -20,6 +20,18 @@ Add to your `cypress/support/index.js` file
 require('cypress-watch-and-reload/support')
 ```
 
+In your `cypress.json` set wildcard with files to watch. For example
+
+```json
+{
+  "cypress-watch-and-reload": {
+    "watch": "page/*"
+  }
+}
+```
+
+Every time you change one of the files matching the wildcard, Cypress will reload itself, rerunning the tests.
+
 ## Example
 
 See project [cypress-watch-and-reload-example](https://github.com/bahmutov/cypress-watch-and-reload-example)
