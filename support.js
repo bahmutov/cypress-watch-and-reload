@@ -15,7 +15,7 @@ beforeEach(() => {
             'reloading Cypress because "%s" has changed',
             data.filename
           )
-          window.top.location.reload()
+          window.top.document.querySelector('.reporter .restart').click()
         }
       } catch (e) {
         console.error('Could not parse message from plugin')
