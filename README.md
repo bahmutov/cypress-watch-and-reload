@@ -1,4 +1,4 @@
-# cypress-watch-and-reload [![CircleCI](https://circleci.com/gh/bahmutov/cypress-watch-and-reload.svg?style=svg)](https://circleci.com/gh/bahmutov/cypress-watch-and-reload)
+# cypress-watch-and-reload [![CircleCI](https://circleci.com/gh/bahmutov/cypress-watch-and-reload.svg?style=svg)](https://circleci.com/gh/bahmutov/cypress-watch-and-reload) [![renovate-app badge][renovate-badge]][renovate-app]
 
 > Reloads Cypress when one of the watched files changes
 
@@ -45,3 +45,6 @@ This plugin opens a WebSocket connection from Cypress to its Node backend. The b
 ## License
 
 MIT license
+
+[renovate-badge]: https://img.shields.io/badge/renovate-app-blue.svg
+[renovate-app]: https://renovateapp.com/
