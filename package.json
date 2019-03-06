@@ -1,5 +1,5 @@
 {
-  "name": "test-reload",
+  "name": "cypress-watch-and-reload",
   "version": "0.0.0-development",
   "description": "Reloads Cypress when a given watched file changes",
   "main": "index.js",
