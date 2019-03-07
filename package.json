@@ -23,7 +23,8 @@
   },
   "devDependencies": {
     "cypress": "3.1.5",
-    "semantic-release": "15.13.3"
+    "semantic-release": "15.13.3",
+    "xstream": "11.10.0"
   },
   "repository": {
     "type": "git",

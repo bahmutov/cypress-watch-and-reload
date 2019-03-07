@@ -1,5 +1,7 @@
 /// <reference types="Cypress" />
 
+import xs from 'xstream'
+
 const ws = new WebSocket('ws://localhost:8765')
 
 const isReloadMessage = data =>
@@ -9,37 +11,53 @@ const isLogMessage = data =>
 
 beforeEach(() => {
   expect(ws.readyState).to.equal(WebSocket.OPEN)
-  ws.onmessage = ev => {
-    console.log('message from OS')
-    console.log(ev)
-    if (ev.type === 'message' && Cypress._.isString(ev.data)) {
-      try {
-        const data = JSON.parse(ev.data)
-        if (isReloadMessage(data)) {
-          console.log(
-            'reloading Cypress because "%s" has changed',
-            data.filename
-          )
-          window.top.document.querySelector('.reporter .restart').click()
-        } else if (isLogMessage(data)) {
-          console.log(data.message)
-          const log = Cypress.log({
-            name: 'message',
-            message: data.message,
-            consoleProps () {
-              return {
-                message: data.message
-              }
-            }
-          })
-          log.end()
-        }
-      } catch (e) {
-        console.error('Could not parse message from plugin')
-        console.error(e.message)
-        console.error('original text')
-        console.error(ev.data)
-      }
+
+  const producer = {
+    start (listener) {
+      console.log('starting producer')
+      ws.onmessage = ev => listener.next(ev)
+    },
+    stop () {
+      console.log('closing web socket')
+      ws.close()
     }
   }
+  const message$ = xs
+    .create(producer)
+    .filter(ev => ev.type === 'message' && Cypress._.isString(ev.data))
+    .map(ev => ev.data)
+    .map(JSON.parse)
+
+  const reload$ = message$.filter(isReloadMessage)
+  const log$ = message$.filter(isLogMessage)
+
+  reload$.addListener({
+    next (data) {
+      console.log('reloading Cypress because "%s" has changed', data.filename)
+      window.top.document.querySelector('.reporter .restart').click()
+    }
+    // todo: handle errors and completed event
+  })
+
+  log$.addListener({
+    next (data) {
+      console.log(data.message)
+      const log = Cypress.log({
+        name: 'message',
+        message: data.message,
+        consoleProps () {
+          return {
+            message: data.message
+          }
+        }
+      })
+      log.end()
+    },
+    error (e) {
+      console.error(e)
+    },
+    complete () {
+      console.log('log messages completed')
+    }
+  })
 })
