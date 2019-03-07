@@ -30,6 +30,15 @@ if (options && typeof options.watch === 'string') {
         client.send(text)
       }
     })
+
+    setTimeout(() => {
+      client.send(
+        JSON.stringify({
+          command: 'log',
+          message: 'hello there'
+        })
+      )
+    }, 1000)
   })
 } else {
   console.log(
