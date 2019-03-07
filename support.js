@@ -6,6 +6,10 @@ const ws = new WebSocket('ws://localhost:8765')
 
 const isReloadMessage = data =>
   data.command === 'reload' && Cypress._.isString(data.filename)
+const isStdoutMessage = data =>
+  data.command === 'stdout' && Cypress._.isString(data.message)
+const isStderrMessage = data =>
+  data.command === 'stderr' && Cypress._.isString(data.message)
 const isLogMessage = data =>
   data.command === 'log' && Cypress._.isString(data.message)
 
@@ -29,7 +33,8 @@ beforeEach(() => {
     .map(JSON.parse)
 
   const reload$ = message$.filter(isReloadMessage)
-  const log$ = message$.filter(isLogMessage)
+  const stdout$ = message$.filter(isStdoutMessage)
+  const stderr$ = message$.filter(isStderrMessage)
 
   reload$.addListener({
     next (data) {
@@ -39,11 +44,33 @@ beforeEach(() => {
     // todo: handle errors and completed event
   })
 
-  log$.addListener({
+  stdout$.addListener({
     next (data) {
       console.log(data.message)
       const log = Cypress.log({
-        name: 'message',
+        name: 'STDOUT',
+        message: data.message,
+        consoleProps () {
+          return {
+            message: data.message
+          }
+        }
+      })
+      log.end()
+    },
+    error (e) {
+      console.error(e)
+    },
+    complete () {
+      console.log('log messages completed')
+    }
+  })
+
+  stderr$.addListener({
+    next (data) {
+      console.error(data.message)
+      const log = Cypress.log({
+        name: 'STDERR',
         message: data.message,
         consoleProps () {
           return {

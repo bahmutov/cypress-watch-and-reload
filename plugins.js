@@ -31,13 +31,42 @@ if (options && typeof options.watch === 'string') {
       }
     })
 
+    client.onclose = () => {
+      console.log('client closing connection ✋')
+    }
+    client.onerror = e => {
+      console.error('WS client error', e)
+    }
+
+    const stdoutWrite = process.stdout.write.bind(process.stdout)
+    process.stdout.write = what => {
+      if (typeof what === 'string') {
+        console.error('wrote stdout')
+        client.send(
+          JSON.stringify({
+            command: 'stdout',
+            message: what
+          })
+        )
+      }
+      stdoutWrite.call(null, what)
+    }
+    // const stderrWrite = process.stderr.write.bind(process.stderr)
+    // process.stderr.write = what => {
+    //   if (typeof what === 'string') {
+    //     client.send(
+    //       JSON.stringify({
+    //         command: 'stderr',
+    //         message: what
+    //       })
+    //     )
+    //   }
+    //   stderrWrite.call(null, what)
+    // }
+
     setTimeout(() => {
-      client.send(
-        JSON.stringify({
-          command: 'log',
-          message: 'hello there'
-        })
-      )
+      console.log('first line is %d', 101)
+      console.error('but there was an error %s', '😡')
     }, 1000)
   })
 } else {
