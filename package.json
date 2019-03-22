@@ -18,7 +18,7 @@
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "chokidar": "2.1.2",
+    "chokidar": "2.1.4",
     "ws": "6.2.0"
   },
   "devDependencies": {
