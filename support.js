@@ -3,7 +3,8 @@
 const ws = new WebSocket('ws://localhost:8765')
 
 beforeEach(() => {
-  expect(ws.readyState).to.equal(WebSocket.OPEN)
+  assert(ws.readyState === WebSocket.OPEN, 'Watch & Reload is ready')
+
   ws.onmessage = ev => {
     console.log('message from OS')
     console.log(ev)
