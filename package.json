@@ -18,12 +18,13 @@
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "async-wait-until": "1.2.4",
     "chokidar": "2.1.6",
     "ws": "6.2.1"
   },
   "devDependencies": {
     "cypress": "3.3.1",
-    "semantic-release": "15.13.12"
+    "semantic-release": "15.13.16"
   },
   "repository": {
     "type": "git",
