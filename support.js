@@ -1,9 +1,10 @@
 /// <reference types="Cypress" />
 
+const waitUntil = require('async-wait-until')
 const ws = new WebSocket('ws://localhost:8765')
 
-beforeEach(() => {
-  assert(ws.readyState === WebSocket.OPEN, 'Watch & Reload is ready')
+beforeEach(async () => {
+  await waitUntil(() => ws.readyState === WebSocket.OPEN, 2000, 50);
 
   ws.onmessage = ev => {
     console.log('message from OS')
