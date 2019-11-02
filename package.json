@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "cypress": "3.6.0",
-    "semantic-release": "15.13.28"
+    "semantic-release": "15.13.29"
   },
   "repository": {
     "type": "git",
