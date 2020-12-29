@@ -4,7 +4,8 @@
   "description": "Reloads Cypress when one of the watched files changes",
   "scripts": {
     "test": "cypress run",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "cy:open": "cypress open"
   },
   "keywords": [
     "cypress",
