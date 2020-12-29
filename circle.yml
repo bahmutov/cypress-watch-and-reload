@@ -1,9 +1,10 @@
+# using https://github.com/cypress-io/circleci-orb to install and run Cypress
 version: 2.1
 orbs:
   cypress: cypress-io/cypress@1
 jobs:
   release:
-    executor: cypress/base-10
+    executor: cypress/base-12-18-3
     steps:
       - attach_workspace:
           at: ~/
@@ -12,9 +13,20 @@ workflows:
   build:
     jobs:
       - cypress/install
+
       - cypress/run:
           requires:
             - cypress/install
+          # notice a trick to avoid re-installing dependencies
+          # in this job - a do-nothing "install-command" parameter
+          install-command: echo 'Nothing to install in this job'
+          # we are not going to use results from this job anywhere else
+          no-workspace: true
+
       - release:
+          filters:
+            branches:
+              only:
+                - master
           requires:
             - cypress/run
