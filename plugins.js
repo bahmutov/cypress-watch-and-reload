@@ -11,8 +11,21 @@ let client // future Cypress client
 const chokidar = require('chokidar')
 const cypressJson = require(join(process.cwd(), 'cypress.json'))
 const options = cypressJson['cypress-watch-and-reload']
-if (options && typeof options.watch === 'string') {
-  console.log('will watch "%s"', options.watch)
+let watchPathOrPaths = options && options.watch;
+
+// utils to check type of options.watch
+const isWatchPathString = typeof watchPathOrPaths === 'string'
+const isWatchPathArray = Array.isArray(watchPathOrPaths) && watchPathOrPaths.length
+const isWatchPathStringOrArray = (isWatchPathString || isWatchPathArray)
+
+if (isWatchPathStringOrArray) {
+  if (isWatchPathArray) {
+    watchPathOrPaths = options.watch
+      .map(path => `"${path}"`)
+      .join(', ')
+  } else { watchPathOrPaths = `"${watchPathOrPaths}"` }
+
+  console.log('will watch %s', watchPathOrPaths)
 
   wss.on('connection', function connection (ws) {
     console.log('new socket connection 🎉')
