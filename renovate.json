@@ -5,5 +5,25 @@
   "automerge": true,
   "major": {
     "automerge": false
-  }
+  },
+  "masterIssue": true,
+  "labels": [
+    "type: dependencies",
+    "renovate"
+  ],
+  "packageRules": [
+    {
+      "packagePatterns": [
+        "*"
+      ],
+      "excludePackagePatterns": [
+        "async-wait-until",
+        "chokidar",
+        "ws",
+        "cypress",
+        "semantic-release"
+      ],
+      "enabled": false
+    }
+  ]
 }
