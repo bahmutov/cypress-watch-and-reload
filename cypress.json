@@ -2,6 +2,6 @@
   "viewportHeight": 300,
   "viewportWidth": 400,
   "cypress-watch-and-reload": {
-    "watch": "page/*"
+    "watch": ["page/*", "circle.yml"]
   }
 }
