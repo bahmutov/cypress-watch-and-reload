@@ -4,7 +4,7 @@ orbs:
   cypress: cypress-io/cypress@1
 jobs:
   release:
-    executor: cypress/base-10
+    executor: cypress/base-12-18-3
     steps:
       - attach_workspace:
           at: ~/
