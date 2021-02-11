@@ -20,7 +20,7 @@
   "dependencies": {
     "async-wait-until": "1.2.6",
     "chokidar": "3.5.1",
-    "ws": "7.4.2"
+    "ws": "7.4.3"
   },
   "devDependencies": {
     "cypress": "6.4.0",
