@@ -23,7 +23,7 @@
     "ws": "7.4.4"
   },
   "devDependencies": {
-    "cypress": "6.8.0",
+    "cypress": "6.9.1",
     "semantic-release": "17.4.2"
   },
   "repository": {
