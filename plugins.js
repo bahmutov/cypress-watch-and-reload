@@ -27,13 +27,18 @@ if (isWatchPathStringOrArray) {
 
   console.log('will watch %s', watchPathOrPaths)
 
+  let watcher = null
   wss.on('connection', function connection (ws) {
     console.log('new socket connection 🎉')
     client = ws
 
-    console.log('starting to watch file index.html')
-    // TODO clear previous watcher
-    chokidar.watch(options.watch).on('change', (path, event) => {
+    console.log('starting to watch files')
+
+    if (watcher) {
+      watcher.close()
+    }
+
+    watcher = chokidar.watch(options.watch).on('change', (path, event) => {
       console.log('file %s has changed', path)
       if (client) {
         const text = JSON.stringify({
@@ -42,7 +47,7 @@ if (isWatchPathStringOrArray) {
         })
         client.send(text)
       }
-    })
+    });
   })
 } else {
   console.log(
