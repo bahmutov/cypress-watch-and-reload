@@ -2,11 +2,13 @@
 
 > Reloads Cypress when one of the watched files changes
 
-## Use
+## Install
 
 ```shell
 npm install cypress-watch-and-reload
 ```
+
+## Use
 
 Add to your `cypress/plugins/index.js` file
 
@@ -43,6 +45,12 @@ You can use a list of files / wildcard patterns to watch:
 ```
 
 This package uses [chokidar](https://github.com/paulmillr/chokidar) under the hood, see [plugins.js](plugins.js)
+
+## UI
+
+There is a button to disable watching the files, which is useful sometimes to modify lots of files before running the tests.
+
+![Toggle button](./images/toggle.png)
 
 ## Example
 
