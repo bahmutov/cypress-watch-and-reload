@@ -13,7 +13,8 @@
     "plugin"
   ],
   "files": [
-    "*.js"
+    "*.js",
+    "ui"
   ],
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "license": "MIT",
