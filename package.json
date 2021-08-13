@@ -5,7 +5,8 @@
   "scripts": {
     "test": "cypress run",
     "test:config": "cypress run --config-file cypress/cypress.json",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "cy:open": "cypress open"
   },
   "keywords": [
     "cypress",
