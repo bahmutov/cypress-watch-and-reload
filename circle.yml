@@ -23,6 +23,10 @@ workflows:
           install-command: echo 'Nothing to install in this job'
           # we are not going to use results from this job anywhere else
           no-workspace: true
+          post-steps:
+            - run:
+                name: Test config custom path
+                command: test:config
 
       - release:
           filters:

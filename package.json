@@ -4,6 +4,7 @@
   "description": "Reloads Cypress when one of the watched files changes",
   "scripts": {
     "test": "cypress run",
+    "test:config": "cypress run --config-file cypress/cypress.json",
     "semantic-release": "semantic-release",
     "cy:open": "cypress open"
   },

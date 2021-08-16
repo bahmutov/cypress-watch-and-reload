@@ -13,7 +13,9 @@ npm install cypress-watch-and-reload
 Add to your `cypress/plugins/index.js` file
 
 ```js
-require('cypress-watch-and-reload/plugins')
+module.exports = (on, config) => {
+  require('cypress-watch-and-reload/plugins')(config)
+}
 ```
 
 Add to your `cypress/support/index.js` file
