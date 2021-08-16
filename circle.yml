@@ -16,6 +16,7 @@ workflows:
       - cypress/install
 
       - cypress/run:
+          name: E2E tests
           requires:
             - cypress/install
           # notice a trick to avoid re-installing dependencies
@@ -23,10 +24,14 @@ workflows:
           install-command: echo 'Nothing to install in this job'
           # we are not going to use results from this job anywhere else
           no-workspace: true
-          post-steps:
-            - run:
-                name: Test config custom path
-                command: test:config
+
+      - cypress/run:
+          name: Custom config file
+          requires:
+            - cypress/install
+          install-command: echo 'Nothing to install in this job'
+          no-workspace: true
+          config-file: cypress/cypress.json
 
       - release:
           filters:
@@ -34,4 +39,5 @@ workflows:
               only:
                 - master
           requires:
-            - cypress/run
+            - E2E tests
+            - Custom config file
