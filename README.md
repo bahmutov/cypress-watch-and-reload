@@ -2,6 +2,10 @@
 
 > Reloads Cypress when one of the watched files changes
 
+## Video
+
+Watch this plugin in action in the short video [Re-run Cypress Tests When Application Files Change](https://www.youtube.com/watch?v=mIyTBtUmmdE).
+
 ## Install
 
 ```shell
