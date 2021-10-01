@@ -4,7 +4,7 @@
 
 ## Video
 
-Watch this plugin in action in the short video [Re-run Cypress Tests When Application Files Change](https://www.youtube.com/watch?v=mIyTBtUmmdE).
+Watch this plugin in action in the short video [Re-run Cypress Tests When Application Files Change](https://www.youtube.com/watch?v=mIyTBtUmmdE) and [Nodemon And cypress-watch-and-reload Utilities](https://youtu.be/fy4qYGK690Q)
 
 ## Install
 
@@ -60,7 +60,7 @@ There is a button to disable watching the files, which is useful sometimes to mo
 
 ## Example
 
-See project [cypress-watch-and-reload-example](https://github.com/bahmutov/cypress-watch-and-reload-example)
+See the projects [cypress-watch-and-reload-example](https://github.com/bahmutov/cypress-watch-and-reload-example) and [chat.io](https://github.com/bahmutov/chat.io)
 
 ## Details
 
@@ -83,6 +83,9 @@ Author: Gleb Bahmutov &lt;gleb.bahmutov@gmail.com&gt; &copy; 2020
 - [@bahmutov](https://twitter.com/bahmutov)
 - [glebbahmutov.com](https://glebbahmutov.com)
 - [blog](https://glebbahmutov.com/blog)
+- [videos](https://www.youtube.com/glebbahmutov)
+- [presentations](https://slides.com/bahmutov)
+- [cypress.tips](https://cypress.tips)
 
 License: MIT - do anything with the code, but don't blame me if it does not work.
 
