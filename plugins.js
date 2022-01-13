@@ -1,8 +1,8 @@
 const WebSocket = require('ws')
-const chokidar = require("chokidar")
+const chokidar = require('chokidar')
 const { join } = require('path')
 
-module.exports = config => {
+module.exports = (config) => {
   // https://github.com/websockets/ws#simple-server
   // create socket even if not watching files to avoid
   // tripping up client trying to connect
@@ -11,49 +11,53 @@ module.exports = config => {
 
   const cypressJson = config.configFile
     ? require(config.configFile)
-    : require(join(process.cwd(), "cypress.json"));
+    : require(join(process.cwd(), 'cypress.json'))
   const options = cypressJson['cypress-watch-and-reload']
-  let watchPathOrPaths = options && options.watch;
+  let watchPathOrPaths = options && options.watch
 
   // utils to check type of options.watch
   const isWatchPathString = typeof watchPathOrPaths === 'string'
-  const isWatchPathArray = Array.isArray(watchPathOrPaths) && watchPathOrPaths.length
-  const isWatchPathStringOrArray = (isWatchPathString || isWatchPathArray)
+  const isWatchPathArray =
+    Array.isArray(watchPathOrPaths) && watchPathOrPaths.length
+  const isWatchPathStringOrArray = isWatchPathString || isWatchPathArray
 
   if (isWatchPathStringOrArray) {
     if (isWatchPathArray) {
-      watchPathOrPaths = options.watch
-        .map(path => `"${path}"`)
-        .join(', ')
-    } else { watchPathOrPaths = `"${watchPathOrPaths}"` }
+      watchPathOrPaths = options.watch.map((path) => `"${path}"`).join(', ')
+    } else {
+      watchPathOrPaths = `"${watchPathOrPaths}"`
+    }
 
-    console.log('will watch %s', watchPathOrPaths)
+    console.log(
+      'cypress-watch-and-reload: maybe will watch %s',
+      watchPathOrPaths,
+    )
 
     let watcher = null
-    wss.on('connection', function connection (ws) {
-      console.log('new socket connection 🎉')
+    wss.on('connection', function connection(ws) {
+      console.log('cypress-watch-and-reload: new socket connection 🎉')
       client = ws
 
-      console.log('starting to watch files')
+      console.log('cypress-watch-and-reload: starting to watch files')
 
       if (watcher) {
         watcher.close()
       }
 
       watcher = chokidar.watch(options.watch).on('change', (path, event) => {
-        console.log('file %s has changed', path)
+        console.log('cypress-watch-and-reload: file %s has changed', path)
         if (client) {
           const text = JSON.stringify({
             command: 'reload',
-            filename: path
+            filename: path,
           })
           client.send(text)
         }
-      });
+      })
     })
   } else {
     console.log(
-      'nothing to watch. Use cypress.json to set "cypress-watch-and-reload" object'
+      'nothing to watch. Use cypress.json to set "cypress-watch-and-reload" object',
     )
     console.log('see https://github.com/bahmutov/cypress-watch-and-reload#use')
   }
