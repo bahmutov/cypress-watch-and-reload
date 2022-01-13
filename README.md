@@ -50,7 +50,7 @@ You can use a list of files / wildcard patterns to watch:
 }
 ```
 
-This package uses [chokidar](https://github.com/paulmillr/chokidar) under the hood, see [plugins.js](plugins.js)
+This package uses [chokidar](https://github.com/paulmillr/chokidar) under the hood, see [plugins.js](plugins.js). The client-side setup is disabled if you are running Cypress in non-interactive mode using `cypress run` command.
 
 ## UI
 
