@@ -61,4 +61,8 @@ module.exports = (config) => {
     )
     console.log('see https://github.com/bahmutov/cypress-watch-and-reload#use')
   }
+
+  // set an internal variable to let the browser-side code know
+  config.env.cypressWatchAndReloadPluginInitialized = true
+  return config
 }

@@ -13,6 +13,12 @@ if (Cypress.config('isInteractive')) {
   }
 
   beforeEach(() => {
+    if (!Cypress.env('cypressWatchAndReloadPluginInitialized')) {
+      throw new Error(
+        'Did you forget to initialize the cypress-watch-and-reload plugin ' +
+          'from your plugins file? See https://github.com/bahmutov/cypress-watch-and-reload#use',
+      )
+    }
     cy.wrap(
       waitUntil(() => ws.readyState === WebSocket.OPEN, 2000, 50),
       { log: false },
