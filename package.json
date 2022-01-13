@@ -25,7 +25,7 @@
     "ws": "8.4.0"
   },
   "devDependencies": {
-    "cypress": "8.7.0",
+    "cypress": "9.2.1",
     "prettier": "2.5.1",
     "semantic-release": "17.4.7"
   },
