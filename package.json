@@ -21,7 +21,7 @@
   "license": "MIT",
   "dependencies": {
     "async-wait-until": "1.2.6",
-    "chokidar": "3.5.2",
+    "chokidar": "3.5.3",
     "ws": "8.4.2"
   },
   "devDependencies": {
