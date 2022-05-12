@@ -1,6 +1,5 @@
 const WebSocket = require('ws')
 const chokidar = require('chokidar')
-const { join } = require('path')
 
 module.exports = (config) => {
   // https://github.com/websockets/ws#simple-server
@@ -9,10 +8,7 @@ module.exports = (config) => {
   const wss = new WebSocket.Server({ port: 8765 })
   let client // future Cypress client
 
-  const cypressJson = config.configFile
-    ? require(config.configFile)
-    : require(join(process.cwd(), 'cypress.json'))
-  const options = cypressJson['cypress-watch-and-reload']
+  const options = config['cypress-watch-and-reload']
   let watchPathOrPaths = options && options.watch
 
   // utils to check type of options.watch
@@ -57,7 +53,7 @@ module.exports = (config) => {
     })
   } else {
     console.log(
-      'nothing to watch. Use cypress.json to set "cypress-watch-and-reload" object',
+      'Nothing to watch. Set the "cypress-watch-and-reload" object in the Cypress configuration',
     )
     console.log('see https://github.com/bahmutov/cypress-watch-and-reload#use')
   }
