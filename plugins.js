@@ -11,6 +11,12 @@ module.exports = (on, config) => {
     on = null
   }
 
+  const isRunMode = config.isTextTerminal
+  if (isRunMode) {
+    console.log('cypress-watch-and-reload: disabled during the run mode')
+    return
+  }
+
   // https://github.com/websockets/ws#simple-server
   // create socket even if not watching files to avoid
   // tripping up client trying to connect
