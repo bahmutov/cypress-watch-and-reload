@@ -43,6 +43,29 @@ Add to your `cypress/support/e2e.js` file
 require('cypress-watch-and-reload/support')
 ```
 
+Note: this plugin will work if you pass both `on` and `config` arguments, or just the `config` argument.
+
+```js
+// pass both arguments
+require('cypress-watch-and-reload/plugins')(on, config)
+// or pass just the config object
+require('cypress-watch-and-reload/plugins')(config)
+```
+
+**Important:** make sure to return the plugin registration or the `config` object
+
+```js
+// return the registration
+setupNodeEvents(on, config) {
+  return require('cypress-watch-and-reload/plugins')(on, config)
+}
+// or return the config object
+setupNodeEvents(on, config) {
+  require('cypress-watch-and-reload/plugins')(on, config)
+  return config
+}
+```
+
 ### Cypress v9
 
 Add to your `cypress/plugins/index.js` file

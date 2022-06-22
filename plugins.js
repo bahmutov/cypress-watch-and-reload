@@ -1,7 +1,16 @@
 const WebSocket = require('ws')
 const chokidar = require('chokidar')
 
-module.exports = (config) => {
+module.exports = (on, config) => {
+  // sometimes the users might pass both arguments
+  // require('cypress-watch-and-reload')(on, config)
+  // or just the config
+  // require('cypress-watch-and-reload')(config)
+  if (typeof on === 'object' && !config) {
+    config = on
+    on = null
+  }
+
   // https://github.com/websockets/ws#simple-server
   // create socket even if not watching files to avoid
   // tripping up client trying to connect
@@ -59,6 +68,14 @@ module.exports = (config) => {
   }
 
   // set an internal variable to let the browser-side code know
+  if (!config.env) {
+    console.warn(
+      'Missing config.env object, did you install the plugin correctly?',
+    )
+    console.warn('https://github.com/bahmutov/cypress-watch-and-reload#install')
+    console.warn()
+    config.env = {}
+  }
   config.env.cypressWatchAndReloadPluginInitialized = true
   return config
 }
