@@ -25,14 +25,6 @@ workflows:
           # we are not going to use results from this job anywhere else
           no-workspace: true
 
-      - cypress/run:
-          name: Custom config file
-          requires:
-            - cypress/install
-          install-command: echo 'Nothing to install in this job'
-          no-workspace: true
-          config-file: cypress/cypress.json
-
       - release:
           filters:
             branches:
@@ -40,4 +32,3 @@ workflows:
                 - master
           requires:
             - E2E tests
-            - Custom config file
