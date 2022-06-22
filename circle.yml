@@ -2,7 +2,7 @@
 # to install and run Cypress
 version: 2.1
 orbs:
-  cypress: cypress-io/cypress@1
+  cypress: cypress-io/cypress@2
 jobs:
   release:
     executor: cypress/base-12-18-3
