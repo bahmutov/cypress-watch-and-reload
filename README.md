@@ -12,7 +12,36 @@ Watch this plugin in action in the short video [Re-run Cypress Tests When Applic
 npm install cypress-watch-and-reload
 ```
 
-## Use
+### Cypress v10+
+
+Load this plugin from your [cypress.config.js](./cypress.config.js) file
+
+```js
+const { defineConfig } = require('cypress')
+
+module.exports = defineConfig({
+  // list the files and file patterns to watch
+  'cypress-watch-and-reload': {
+    watch: ['page/*', 'circle.yml'],
+  },
+  e2e: {
+    // We've imported your old cypress plugins here.
+    // You may want to clean this up later by importing these.
+    setupNodeEvents(on, config) {
+      // https://github.com/bahmutov/cypress-watch-and-reload
+      return require('cypress-watch-and-reload/plugins')(on, config)
+    },
+  },
+})
+```
+
+Add to your `cypress/support/e2e.js` file
+
+```js
+require('cypress-watch-and-reload/support')
+```
+
+### Cypress v9
 
 Add to your `cypress/plugins/index.js` file
 
