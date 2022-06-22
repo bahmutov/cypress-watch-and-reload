@@ -9,7 +9,9 @@ Watch this plugin in action in the short video [Re-run Cypress Tests When Applic
 ## Install
 
 ```shell
-npm install cypress-watch-and-reload
+npm install -D cypress-watch-and-reload
+# or using Yarn
+yarn add -D cypress-watch-and-reload
 ```
 
 ### Cypress v10+
