@@ -23,7 +23,9 @@ module.exports = (on, config) => {
   const wss = new WebSocket.Server({ port: 8765 })
   let client // future Cypress client
 
-  const options = config['cypress-watch-and-reload']
+  const env = config.env || {}
+  const options =
+    env['cypress-watch-and-reload'] || config['cypress-watch-and-reload']
   let watchPathOrPaths = options && options.watch
 
   // utils to check type of options.watch
