@@ -22,11 +22,13 @@ Load this plugin from your [cypress.config.js](./cypress.config.js) file
 const { defineConfig } = require('cypress')
 
 module.exports = defineConfig({
-  // list the files and file patterns to watch
-  'cypress-watch-and-reload': {
-    watch: ['page/*', 'circle.yml'],
-  },
   e2e: {
+    env: {
+      // list the files and file patterns to watch
+      'cypress-watch-and-reload': {
+        watch: ['page/*', 'circle.yml'],
+      },
+    },
     // We've imported your old cypress plugins here.
     // You may want to clean this up later by importing these.
     setupNodeEvents(on, config) {
