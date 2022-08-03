@@ -35,7 +35,8 @@ if (Cypress.config('isInteractive')) {
                   'reloading Cypress because "%s" has changed',
                   data.filename,
                 )
-                window.top.document.querySelector('.reporter .restart').click()
+                const restartBtn = window.top.document.querySelector('.reporter .restart')
+                restartBtn ? restartBtn.click() : window.top.location.reload()
               }
             }
           } catch (e) {
