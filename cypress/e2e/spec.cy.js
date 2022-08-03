@@ -15,4 +15,11 @@ context('Example Cypress TodoMVC test', () => {
     cy.contains('h2', 'simple HTML page')
     cy.get('@alert').should('be.calledWithExactly', 'bar')
   })
+
+  it.skip('is a very long test', () => {
+    // what happens when you save the watched files
+    // during the running test? It should reload
+    // them all
+    cy.wait(20_000)
+  })
 })

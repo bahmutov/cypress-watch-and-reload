@@ -35,7 +35,11 @@ if (Cypress.config('isInteractive')) {
                   'reloading Cypress because "%s" has changed',
                   data.filename,
                 )
-                const restartBtn = window.top.document.querySelector('.reporter .restart')
+                // if the button is unavailable, that means
+                // the tests are probably already running
+                // so let's reload the top window and they will restart again
+                const restartBtn =
+                  window.top.document.querySelector('.reporter .restart')
                 restartBtn ? restartBtn.click() : window.top.location.reload()
               }
             }
