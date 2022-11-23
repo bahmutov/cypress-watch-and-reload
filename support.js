@@ -8,7 +8,7 @@ if (Cypress.config('isInteractive')) {
   let watchAndReloadEnabled = true
   const button = insertToggleButton()
   button.onclick = () => {
-    button.classList.toggle('auto-scrolling-enabled')
+    button.classList.toggle('reload-enabled')
     watchAndReloadEnabled = !watchAndReloadEnabled
   }
 
