@@ -2,7 +2,7 @@
 
 > Reloads Cypress when one of the watched files changes
 
-🎓 Covered by my course [Cypress Plugins](https://cypress.tips/courses/cypress-plugins)
+🎓 Covered by my courses [Cypress Plugins](https://cypress.tips/courses/cypress-plugins) and [Testing The Swag Store](https://cypress.tips/courses/swag-store).
 
 ## Video
 
