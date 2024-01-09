@@ -20,7 +20,7 @@
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "async-wait-until": "1.2.6",
+    "async-wait-until": "2.0.12",
     "chokidar": "3.5.3",
     "ws": "8.16.0"
   },
