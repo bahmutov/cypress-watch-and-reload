@@ -1,4 +1,4 @@
-/// <reference types="Cypress" />
+/// <reference types="cypress" />
 
 if (Cypress.config('isInteractive')) {
   const insertToggleButton = require('./ui/toggle-btn')
