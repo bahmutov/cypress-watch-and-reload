@@ -4,6 +4,8 @@
 
 🎓 Covered by my courses [Cypress Plugins](https://cypress.tips/courses/cypress-plugins) and [Testing The Swag Store](https://cypress.tips/courses/swag-store).
 
+- 📝 Read blog post [Watch Mock And Reload](https://glebbahmutov.com/blog/watch-mock-reload/)
+
 ## Video
 
 Watch this plugin in action in the short video [Re-run Cypress Tests When Application Files Change](https://www.youtube.com/watch?v=mIyTBtUmmdE) and [Nodemon And cypress-watch-and-reload Utilities](https://youtu.be/fy4qYGK690Q)
