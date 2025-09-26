@@ -1,7 +1,8 @@
 const WebSocket = require('ws')
 const chokidar = require('chokidar')
+const getPort = require('get-port')
 
-module.exports = (on, config) => {
+module.exports = async (on, config) => {
   // sometimes the users might pass both arguments
   // require('cypress-watch-and-reload')(on, config)
   // or just the config
@@ -20,7 +21,8 @@ module.exports = (on, config) => {
   // https://github.com/websockets/ws#simple-server
   // create socket even if not watching files to avoid
   // tripping up client trying to connect
-  const wss = new WebSocket.Server({ port: 8765 })
+  const port = await getPort({ port: 8765 })
+  const wss = new WebSocket.Server({ port })
   let client // future Cypress client
 
   const env = config.env || {}
@@ -85,5 +87,6 @@ module.exports = (on, config) => {
     config.env = {}
   }
   config.env.cypressWatchAndReloadPluginInitialized = true
+  config.env.cypressWatchAndReloadPort = port
   return config
 }

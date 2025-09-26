@@ -53,9 +53,19 @@ Note: this plugin will work if you pass both `on` and `config` arguments, or jus
 
 ```js
 // pass both arguments
-require('cypress-watch-and-reload/plugins')(on, config)
+await require('cypress-watch-and-reload/plugins')(on, config)
 // or pass just the config object
-require('cypress-watch-and-reload/plugins')(config)
+await require('cypress-watch-and-reload/plugins')(config)
+```
+
+Note: The plugin returns a Promise. Use `await` if not directly returning from `setupNodeEvents`:
+
+```js
+async setupNodeEvents(on, config) {
+  await require('cypress-watch-and-reload/plugins')(on, config)
+  // do other setup...
+  return config
+}
 ```
 
 **Important:** make sure to return the plugin registration or the `config` object
@@ -66,8 +76,8 @@ setupNodeEvents(on, config) {
   return require('cypress-watch-and-reload/plugins')(on, config)
 }
 // or return the config object
-setupNodeEvents(on, config) {
-  require('cypress-watch-and-reload/plugins')(on, config)
+async setupNodeEvents(on, config) {
+  await require('cypress-watch-and-reload/plugins')(on, config)
   return config
 }
 ```

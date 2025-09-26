@@ -22,6 +22,7 @@
   "dependencies": {
     "async-wait-until": "1.2.6",
     "chokidar": "3.6.0",
+    "get-port": "5.1.1",
     "ws": "8.18.3"
   },
   "devDependencies": {

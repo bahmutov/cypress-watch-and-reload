@@ -3,7 +3,8 @@
 if (Cypress.config('isInteractive')) {
   const insertToggleButton = require('./ui/toggle-btn')
   const waitUntil = require('async-wait-until')
-  const ws = new WebSocket('ws://localhost:8765')
+  const port = Cypress.env('cypressWatchAndReloadPort')
+  const ws = new WebSocket(`ws://localhost:${port}`)
 
   let watchAndReloadEnabled = true
   const button = insertToggleButton()
