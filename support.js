@@ -1,6 +1,12 @@
 /// <reference types="cypress" />
 
 if (Cypress.config('isInteractive')) {
+  if (!Cypress.expose) {
+    throw new Error(
+      'Missing Cypress.expose function, please update Cypress to v15.11.0 or later',
+    )
+  }
+
   const insertToggleButton = require('./ui/toggle-btn')
   const waitUntil = require('async-wait-until')
   const port = Cypress.expose('cypressWatchAndReloadPort')

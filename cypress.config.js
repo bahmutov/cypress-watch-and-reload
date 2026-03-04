@@ -3,6 +3,7 @@ const { defineConfig } = require('cypress')
 module.exports = defineConfig({
   viewportHeight: 300,
   viewportWidth: 400,
+  allowCypressEnv: false,
   e2e: {
     env: {
       // it only makes sense to watch the application files
