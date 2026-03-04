@@ -26,8 +26,11 @@ module.exports = async (on, config) => {
   let client // future Cypress client
 
   const env = config.env || {}
+  const expose = config.expose || {}
   const options =
-    env['cypress-watch-and-reload'] || config['cypress-watch-and-reload']
+    env['cypress-watch-and-reload'] ||
+    expose['cypress-watch-and-reload'] ||
+    config['cypress-watch-and-reload']
   let watchPathOrPaths = options && options.watch
 
   // utils to check type of options.watch
@@ -78,15 +81,16 @@ module.exports = async (on, config) => {
   }
 
   // set an internal variable to let the browser-side code know
-  if (!config.env) {
+  if (!config.expose) {
     console.warn(
-      'Missing config.env object, did you install the plugin correctly?',
+      'Missing config.expose object, did you install the plugin correctly?',
     )
     console.warn('https://github.com/bahmutov/cypress-watch-and-reload#install')
     console.warn()
-    config.env = {}
+    config.expose = {}
   }
-  config.env.cypressWatchAndReloadPluginInitialized = true
-  config.env.cypressWatchAndReloadPort = port
+  // public variables
+  config.expose.cypressWatchAndReloadPluginInitialized = true
+  config.expose.cypressWatchAndReloadPort = port
   return config
 }
