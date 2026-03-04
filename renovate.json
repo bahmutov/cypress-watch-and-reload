@@ -3,6 +3,8 @@
     "config:base"
   ],
   "automerge": true,
+  "prHourlyLimit": 4,
+  "updateNotScheduled": false,
   "major": {
     "automerge": false
   },
@@ -10,20 +12,5 @@
   "labels": [
     "type: dependencies",
     "renovate"
-  ],
-  "packageRules": [
-    {
-      "packagePatterns": [
-        "*"
-      ],
-      "excludePackagePatterns": [
-        "async-wait-until",
-        "chokidar",
-        "ws",
-        "cypress",
-        "semantic-release"
-      ],
-      "enabled": false
-    }
   ]
 }
