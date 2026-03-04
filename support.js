@@ -3,7 +3,7 @@
 if (Cypress.config('isInteractive')) {
   const insertToggleButton = require('./ui/toggle-btn')
   const waitUntil = require('async-wait-until')
-  const port = Cypress.env('cypressWatchAndReloadPort')
+  const port = Cypress.expose('cypressWatchAndReloadPort')
   const ws = new WebSocket(`ws://localhost:${port}`)
 
   let watchAndReloadEnabled = true
@@ -14,7 +14,7 @@ if (Cypress.config('isInteractive')) {
   }
 
   beforeEach(() => {
-    if (!Cypress.env('cypressWatchAndReloadPluginInitialized')) {
+    if (!Cypress.expose('cypressWatchAndReloadPluginInitialized')) {
       throw new Error(
         'Did you forget to initialize the cypress-watch-and-reload plugin ' +
           'from your plugins file? See https://github.com/bahmutov/cypress-watch-and-reload#use',
