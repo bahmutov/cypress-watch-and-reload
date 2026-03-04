@@ -1,6 +1,6 @@
 const WebSocket = require('ws')
 const chokidar = require('chokidar')
-const getPort = require('get-port')
+const getPort = require('get-port').default
 
 module.exports = async (on, config) => {
   // sometimes the users might pass both arguments
