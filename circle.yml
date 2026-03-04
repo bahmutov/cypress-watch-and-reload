@@ -24,11 +24,3 @@ workflows:
           install-command: echo 'Nothing to install in this job'
           # we are not going to use results from this job anywhere else
           no-workspace: true
-
-      - release:
-          filters:
-            branches:
-              only:
-                - master
-          requires:
-            - E2E tests
