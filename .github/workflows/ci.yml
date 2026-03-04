@@ -19,14 +19,11 @@ jobs:
   release:
     needs: test
     runs-on: ubuntu-24.04
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/master'
     steps:
       - uses: actions/setup-node@v6
         with:
           node-version: 24
-
-      - name: Print NPM version 📜
-        run: npm --version
 
       - name: Checkout 🛎
         uses: actions/checkout@v6
@@ -40,6 +37,6 @@ jobs:
       - name: Semantic Release 🚀
         uses: cycjimmy/semantic-release-action@v6
         with:
-          branch: main
+          branch: master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
