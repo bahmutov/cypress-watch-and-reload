@@ -23,7 +23,7 @@
     "async-wait-until": "1.2.6",
     "chokidar": "3.6.0",
     "get-port": "7.1.0",
-    "ws": "8.19.0"
+    "ws": "8.20.0"
   },
   "devDependencies": {
     "cypress": "15.12.0",
