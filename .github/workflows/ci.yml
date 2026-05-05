@@ -9,7 +9,7 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Run tests
-        uses: cypress-io/github-action@v6
+        uses: cypress-io/github-action@v7.3.0
 
   release:
     needs: test
@@ -34,7 +34,7 @@ jobs:
 
       - name: Install everything 📦
         # https://github.com/cypress-io/github-action
-        uses: cypress-io/github-action@v6
+        uses: cypress-io/github-action@v7.3.0
         with:
           runTests: false
 
